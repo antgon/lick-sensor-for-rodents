@@ -1,0 +1,8 @@
+.vscode
+**/.history
+**/build/*
+*.swp
+html
+.venv
+__pycache__/
+uv.lock

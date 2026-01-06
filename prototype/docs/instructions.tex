@@ -1,0 +1,185 @@
+\documentclass[a4paper,11pt]{article}
+% Fontsizes: normalsize, small, footnotesize, scriptsize, tiny
+
+%% ++ Language ++
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=british]{english}
+
+%% ++ Layout ++
+
+\frenchspacing
+% \usepackage{setspace}\onehalfspacing
+\usepackage[a4paper,margin=3cm]{geometry}
+\setlength{\footskip}{1cm}
+
+% To move the title up and reduce space between the date and the first
+% paragraph (does not work with KOMA scrartcl),
+\usepackage{titling}
+\setlength{\droptitle}{-5\baselineskip}
+% \predate{\begin{center}\large}
+\postdate{\par\end{center}\vspace{-3\baselineskip}}
+
+% To decrease space between sections (does not work with KOMA scrartcl),
+% \usepackage[compact]{titlesec} 
+
+%% ++ Figures ++
+
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage[off]{svg-extract}
+\svgsetup{clean=true,inkscapearea=page,inkscapepath=svg-inkscape/}
+\graphicspath{{img/}}
+\svgpath{{svg/}}
+
+%% ++ Captions ++
+
+\usepackage{caption}
+\captionsetup{format=plain, font={small,singlespacing},
+  labelfont=bf, labelsep=period}
+    %labelsep=newline, justification=RaggedRight}
+
+%% ++ Lists ++
+
+\usepackage{enumitem}
+\setlist{noitemsep}
+
+% ++ Fonts
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO}%,warnings-off={mathtools-colon}}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{TeX Gyre Heros}
+%\setmathfont{TeX Gyre Schola Math}[Scale=MatchLowercase]
+\setsansfont{TeX Gyre Heros}[Scale=MatchLowercase]
+\setmonofont{TeX Gyre Cursor}[Scale=MatchLowercase]
+\usepackage{relsize}
+
+%% ++ Headers/footers
+
+\usepackage{fancyhdr}
+\usepackage{scrdate}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\fancyfoot[L]{\tiny Antonio González, Ver.~\ISOToday}
+\fancyfoot[R]{\thepage}
+
+
+%% ++ Optional extra formatting
+
+% Remove sections numbering
+\setcounter{secnumdepth}{-1}
+
+% Maths. \begin{equation} or \begin{align}
+% \usepackage{mathtools}
+
+%% ++ Hyperref
+\usepackage{hyperref}
+\hypersetup{
+  pdfauthor={JA González},
+  pdftitle={Lick sensor},
+  pdfsubject={},
+  hidelinks
+}
+\urlstyle{same}
+% \newcommand\email[1]{\href{mailto:#1}{#1}}
+
+
+%% ++ Begin
+\title{\textbf{Lick sensor}}
+%\author{JA González}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+% \vskip-4em
+
+\begin{figure}[h]
+    % \centering
+    \includesvg[pretex=\footnotesize,width=\columnwidth]{board}
+    \caption{Overview of the lick-sensing device.}\label{fig:device}
+    \end{figure}
+
+\section{Wiring}
+\begin{enumerate}
+    \item Use a cable to connect input ``0'' (second from left to right
+    on the ``Lick sensor connector'', see Fig.~\ref{fig:device}) to the
+    (metal) spout of a drinking bottle (Fig.~\ref{fig:shielding}A).
+    \item Connect ``Digital out'' to your data acquisition system with a
+    BNC cable.
+    \item (Optional) Connect ``Analog out'' to your data acquisition
+    system with a BNC cable.
+    \item Connect a USB cable to ``USB''. This powers the device. Do
+    this only after all other cables have been connected and the
+    drinking bottle is in place.
+\end{enumerate}
+
+\section{Operation}
+\begin{enumerate}
+    \item Record data from ``Digital out''. This will be the licking
+    signal: a step will appear with every lick
+    (Fig.~\ref{fig:shielding}B).
+    \item (Optional) Record the signal from ``Analog out''. This signal
+    increases or decreases with changes in capacitance in the touch
+    sensor and it could be useful at some point if we needed to
+    troubleshoot the system.
+\end{enumerate}
+
+\section{Adjusting settings}
+
+The default settings should work just fine. If some tuning is needed,
+each setting on the display can be adjusted using the buttons:
+
+\begin{itemize}
+    \item ``Previous'' and ``Next'' take you through the different
+        possible settings.
+    \item ``+'' and ``−'' increase or decrease the value of the setting
+        currently on display.
+\end{itemize}
+
+The most relevant settings are perhaps ``Touch threshold'' and ``Release
+threshold'': when the analogue signal goes above Touch threshold, a
+touch event (i.e.\ a lick) is triggered. When this signal goes below
+Release threshold, the event (lick) is considered to have
+ended.\footnote{Note that the value of Touch threshold must always be
+greater than that of Release threshold.} Thus, these two values set the
+sensitivity of the system and introduce hysteresis to limit jitter.
+
+% Increase Touch threshold if the system is too sensitive.
+% Increase Release threshold if 
+
+
+\section{Optional: grounding}
+
+It may be that animals trigger false positive lick events when they
+touch with their paw the drinking bottle. These false positive events
+may be reduced by shielding the spout of the water bottle with foil
+(Fig.~\ref{fig:shielding}C,D) and connecting this foil to ``G'' (ground)
+in the Lick sensor connector. Just ensure that signal and ground cables
+do not make contact with each other.
+
+
+\begin{figure}
+    \centering
+    \includesvg[pretex=\scriptsize,width=\columnwidth]{lickometer-system}
+    \caption{(\textbf{A}) A cable connecting the spout of the drinking
+    bottle to the lick sensor is all the wiring required at the animal's
+    end. (\textbf{B}) The output of the lick sensor (``Digital out'' in
+    Fig.~\ref{fig:device}) is a series of voltage steps, each indicating
+    a lick event. (\textbf{C}) Optionally, shielding the spout of the
+    drinking bottle may help reduce false positives that arise when
+    animals hold the spout while drinking. To do this, surround the
+    spout with a piece of conductive material (e.g.\ foil) and connect
+    this to ground (``G'') on the Lick sensor connector. Use heat shrink
+    or similar to ensure that the foil (ground) and the spout (sensor)
+    do not touch each other. The tip of the spout should be clear of the
+    foil shielding. (\textbf{D}) Keeping ground and signal cables
+    separate, connect these the to the lick
+    sensor.}\label{fig:shielding}
+\end{figure}
+
+
+\end{document}

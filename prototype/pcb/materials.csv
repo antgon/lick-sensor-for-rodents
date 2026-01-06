@@ -1,0 +1,16 @@
+Item, Qty, Supplier, PartNum
+BNC connector right angle, 2, Farnell, CN21972
+Capacitor 0.1u, 1
+Capacitor 10u tantal, 1
+Capacitor 1u, 1
+Connector 01x04 Pin, 1
+Connector 01x04 Socket, 1
+DAC MCP4821, 1, Farnell, 1439411
+IC socket DIL 8 way, 1, Farnell, SPC15494
+LCD SeeedStudio Grove 16x2 I2C, 1, RapidElectronics, 75-1088
+M2 spacers, 2, Farnell, PC02805
+Push button, 4
+Raspberry Pi Pico, 1
+Stripboard 160x100, 1, Farnell, 3263921
+Terminal block 01x04, 1
+Touch sensor breakout board MPR121 (Adafruit 1982), 1, The PiHut, ADA1982
