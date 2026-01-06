@@ -9,7 +9,7 @@ MPR121 capacitive touch sensor breakout, Adafruit 1982 | DigiKey | 1528-1038-ND
 MPR121 capacitive touch sensor breakout, Adafruit 1982 | The PiHut |ADA1982
 Stripboard 100x100mm | Farnell | 2503759
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > Adafruit sell two different MPR121 touch sensor breakouts under the
 same Product ID 1982: the original, header-only version, and the STEMMA
 QT version. Both work in the same way, and the PCBs are the same size
