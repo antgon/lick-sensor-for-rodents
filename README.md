@@ -45,10 +45,10 @@ directories. Briefly,
   where they can be recorded with a data acquisition system and/or used
   for driving additional laboratory hardware in real time.
 
-* [**Several bottles, BNC outputs**](bottles-x6-bnc-out). Similar to the
+* [**Several bottles, BNC outputs**](bottle-x6-bnc-out). Similar to the
   setup above but using more than one drink bottle.
 
-* [**Many bottles (up to 12), USB output**](bottles-x12-usb-out). Here,
+* [**Many bottles (up to 12), USB output**](bottle-x12-usb-out). Here,
   lick events (timestamps) from many drink bottles are detected and sent
   to a computer connected to the microcontroller with a USB cable. The
   construction of this lick sensor is very simple and a data-acquisition
@@ -56,7 +56,7 @@ directories. Briefly,
   more elaborate: it is necessary to install and run Python software in
   the host computer.
 
-* [**Many bottles (up to 24), USB output**](bottles-x24-usb-out). As
+* [**Many bottles (up to 24), USB output**](bottle-x24-usb-out). As
   above, but using 2 touch-detection boards to handle up to 24 drink
   bottles simultaneously.
 
