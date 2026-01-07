@@ -1,6 +1,6 @@
 ![Banner](ui/banner.svg)
 
-<h3 align="center">
+<h2 align="center">
 Read and plot serial data from a microcontroller
 </h2>
 
@@ -28,8 +28,8 @@ minimal effort.
 
 1. Connect the microcontroller to the host computer.
 
-1. Run `python main.py` on the host computer. (Even better, if `uv` is
-   installed in the host computer, do `uv run main.py`.)
+1. Run `python main.py` on the host computer. (Or, if `uv` is installed
+   in the host computer, do `uv run main.py`.)
 
 1. Click the "play" button to display the data.
 
